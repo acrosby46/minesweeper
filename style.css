@@ -1,0 +1,67 @@
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+  background-color: black;
+}
+
+#controls {
+  height: 100px;
+  width: 800px;
+  padding-top: 25px;
+  margin: auto;
+}
+
+#reset {
+  background-color: #4c8baf; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: auto;
+}
+
+#container {
+  display: grid;
+  grid-gap: 0em;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  height: 800px;
+  width: 800px;
+  margin: auto;
+}
+
+.grid-item {
+  padding: 1em;
+  border: 1px solid rgb(86, 167, 182);
+  background-color: rgb(26, 26, 26);
+  text-align: center;
+  color:aqua;
+}
+
+.grid-item:hover {
+  border: 1px solid rgb(86, 167, 182);
+  background-color: rgb(61, 61, 61);
+}
+
+.btnClicked {
+  background-color:rgb(49, 127, 133)
+}
+
+.btnClicked:hover {
+  background-color:rgb(67, 150, 156)
+}
+
+.btnRtClicked {
+  background-color:rgb(65, 82, 105)
+}
+
+.btnRtClicked:hover {
+  background-color:rgb(65, 82, 105)
+}
+
+.isMine {
+  background-color:rgb(61, 48, 97)
+}

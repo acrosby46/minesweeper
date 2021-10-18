@@ -163,6 +163,7 @@ const btnClicked = function(id) {
   buttons[id].classList.remove('btnRtClicked');
 
   if (buttonValues[y][x].type === "mine") { // GAME OVER
+    playAudio('audio\\Mine.mp3');
     gameOver();
     revealMines();
     alert(`Game over!`);
@@ -170,6 +171,7 @@ const btnClicked = function(id) {
   }
 
   if (buttonValues[y][x].value === 0) { // EMPTY SPACE
+    playAudio('audio\\EmptySpaces.mp3');
     checkZeros(y, x);
   } else { // NUMBER
     console.log(buttonValues[y][x].state);
@@ -260,8 +262,8 @@ function gameOver() {
 
 function revealMines() {
   for (let i = 0; i < mineArray.length; i++) {
-    buttons[mineArray[i]].classList.add('btnRtClicked');
-    buttons[mineArray[i]].innerText = "M";
+    buttons[mineArray[i]].classList.add('isMine');
+    buttons[mineArray[i]].innerHTML = ``;
   }
 }
 
@@ -273,6 +275,7 @@ function checkWin() {
     revealMines();
     gameOver();
     alert('you win');
+    playAudio('audio\\Win.mp3');
   } else {
     return;
   }
@@ -308,4 +311,12 @@ document.getElementById("reset").addEventListener("click", function() {
 
   init();
 
+  playAudio('audio\\Start.mp3');
+
 });
+
+// PLAY AUDIO
+
+function playAudio(audio) {
+  new Audio(audio).play();
+}

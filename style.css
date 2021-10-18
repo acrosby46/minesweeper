@@ -1,26 +1,45 @@
 :root {
   --grid-cols: 1;
   --grid-rows: 1;
-  background-color: black;
+  height: 100vh;
+  background-image: url(images/background.jpg);
 }
 
 #controls {
-  height: 100px;
-  width: 800px;
-  padding-top: 25px;
+  height: 100%;
+  width: 200px;
+  position: fixed;
   margin: auto;
+  padding-top: 75px;
+  padding-left: 50px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+h1 {
+  font-family: 'Consolas';
+  font-size: 20px;
+  color:rgb(236, 250, 255);
 }
 
 #reset {
-  background-color: #4c8baf; /* Green */
-  border: none;
+  background-color: rgb(26, 26, 26); /* Green */
+  opacity: 75%;
+  border: 1px solid rgba(68, 98, 104, 0.459);
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  font-family: 'Consolas';
   font-size: 16px;
   margin: auto;
+  border-radius: 10px;
+}
+
+#reset:hover {
+  border: 1px solid rgb(86, 167, 182);
+  background-color: rgb(61, 61, 61);
 }
 
 #container {
@@ -31,14 +50,26 @@
   height: 800px;
   width: 800px;
   margin: auto;
+  padding-top: 75px;
 }
 
 .grid-item {
+  font-family: 'Consolas';
+  font-size: 12px;
   padding: 1em;
-  border: 1px solid rgb(86, 167, 182);
+  margin: 3px;
+  border: 1px solid rgba(68, 98, 104, 0.459);
+  border-radius: 10px;
   background-color: rgb(26, 26, 26);
   text-align: center;
-  color:aqua;
+  color:rgb(236, 250, 255);
+  opacity: 80%;
+}
+
+.grid-item isMine {
+  display: block;
+  margin: 0 auto;
+  position: relative;
 }
 
 .grid-item:hover {
@@ -47,7 +78,8 @@
 }
 
 .btnClicked {
-  background-color:rgb(49, 127, 133)
+  background-color:rgb(49, 127, 133);
+  opacity: 95%;
 }
 
 .btnClicked:hover {
@@ -63,5 +95,8 @@
 }
 
 .isMine {
-  background-color:rgb(61, 48, 97)
+  background-color:rgb(61, 48, 97);
+  background-image: url(images/mine.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }

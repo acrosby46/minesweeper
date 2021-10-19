@@ -44,7 +44,6 @@ function init() {
     let currentRow = [];
     for (let c = 0; c < numberOfColumns; c++) { // populate the columns
       let random = Math.random();
-      console.log(random);
       let ratio = avlMines / numberOfSpaces;
       if (random > ratio || avlMines === 0) {
         currentRow.push({flagged: false, posx: c, posy: i, state: 'NotClicked', type: 'number', value: '', neighbours: []});
@@ -60,8 +59,6 @@ function init() {
     }
     buttonValues.push(currentRow);
   }
-
-  console.log(`Mines are in IDs: ${mineArray}`); //NEED TO REMOVE THIS <<<<<<
 
   // ASSIGN MINE COUNT
 
@@ -164,9 +161,8 @@ const btnClicked = function(id) {
 
   if (buttonValues[y][x].type === "mine") { // GAME OVER
     playAudio('audio\\Mine.mp3');
+    revealMines(false);
     gameOver();
-    revealMines();
-    alert(`Game over!`);
     return;
   }
 
@@ -174,7 +170,6 @@ const btnClicked = function(id) {
     playAudio('audio\\EmptySpaces.mp3');
     checkZeros(y, x);
   } else { // NUMBER
-    console.log(buttonValues[y][x].state);
     setClicked(id, y, x);
     buttons[id].classList.add('btnClicked');
     buttons[id].innerText = buttonValues[y][x].value;
@@ -202,6 +197,7 @@ const btnClicked = function(id) {
         buttonValues[r][c].state = "Clicked";
         buttons[newId].innerText = '';
         buttons[newId].classList.remove('btnRtClicked');
+        buttons[newId].classList.add('isEmpty');
         remainingSpaces = remainingSpaces - 1;
       }
     } else {
@@ -233,7 +229,7 @@ const btnRightClicked = function(e, id) {
 
       if (buttonValues[y][x].flagged === false) {
         e.preventDefault();
-        buttons[id].innerText = "?";
+        buttons[id].innerText = "";
         buttons[id].classList.add('btnRtClicked');
         buttonValues[y][x].flagged = true;
       } else if (buttonValues[y][x].flagged === true) {
@@ -260,11 +256,19 @@ function gameOver() {
 
 // REVEAL MINES
 
-function revealMines() {
-  for (let i = 0; i < mineArray.length; i++) {
-    buttons[mineArray[i]].classList.add('isMine');
-    buttons[mineArray[i]].innerHTML = ``;
+function revealMines(win) {
+  if (win === false) {
+    for (let i = 0; i < mineArray.length; i++) {
+      buttons[mineArray[i]].classList.add('isMine');
+      buttons[mineArray[i]].innerHTML = ``;
+    }
+  } else if (win === true) {
+    for (let i = 0; i < mineArray.length; i++) {
+      buttons[mineArray[i]].classList.add('isMineWin');
+      buttons[mineArray[i]].innerHTML = ``;
+    }
   }
+  
 }
 
 
@@ -272,9 +276,8 @@ function revealMines() {
 
 function checkWin() {
   if (remainingSpaces === 0) {
-    revealMines();
+    revealMines(true);
     gameOver();
-    alert('you win');
     playAudio('audio\\Win.mp3');
   } else {
     return;

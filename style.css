@@ -13,7 +13,7 @@
   padding-top: 75px;
   padding-left: 50px;
   text-align: center;
-  letter-spacing: 3px;
+  letter-spacing: 8px;
 }
 
 h1 {
@@ -58,18 +58,12 @@ h1 {
   font-size: 12px;
   padding: 1em;
   margin: 3px;
-  border: 1px solid rgba(68, 98, 104, 0.459);
+  border: 0px solid rgba(68, 98, 104, 0.459);
   border-radius: 10px;
   background-color: rgb(26, 26, 26);
   text-align: center;
   color:rgb(236, 250, 255);
   opacity: 80%;
-}
-
-.grid-item isMine {
-  display: block;
-  margin: 0 auto;
-  position: relative;
 }
 
 .grid-item:hover {
@@ -78,7 +72,7 @@ h1 {
 }
 
 .btnClicked {
-  background-color:rgb(49, 127, 133);
+  background-color:rgb(99, 113, 114);
   opacity: 95%;
 }
 
@@ -87,7 +81,10 @@ h1 {
 }
 
 .btnRtClicked {
-  background-color:rgb(65, 82, 105)
+  background-color:rgb(65, 82, 105);
+  background-image: url(images/flag.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .btnRtClicked:hover {
@@ -99,4 +96,15 @@ h1 {
   background-image: url(images/mine.png);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.isMineWin {
+  background-color:rgb(48, 97, 59);
+  background-image: url(images/mine.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.isEmpty {
+  background-color:rgb(49, 127, 133);
 }
